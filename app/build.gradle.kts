@@ -39,7 +39,7 @@ android {
         jvmTarget = "1.8"
     }
     buildFeatures{
-        viewBinding true
+        viewBinding; true
     }
 }
 
@@ -57,7 +57,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
 
     //network
-    implementation( 'com.squareup.okhttp3:okhttp:4.9.3')
+    implementation( "com.squareup.okhttp3:okhttp:4.9.3")
 
 
 
