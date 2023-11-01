@@ -1,0 +1,12 @@
+module project
+
+data
+
+di
+
+ui
+  base
+      CustomFlowOperator: Emits Flow -> Flow List
+      DefaultLoadStateAdapter: Adapter with Padding uses
+      Event: Event with value in App is base on LiveData
+      OnChange ? Maybe state. Have parametr value in constructor
