@@ -7,19 +7,18 @@ plugins {
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
 
-
 }
 
 android {
-    namespace = "com.example.pagging_remote_medaitor_spacex"
-    compileSdk = 34
+    namespace "com.example.pagging_remote_medaitor_spacex"
+    compileSdk 34
 
     defaultConfig {
         applicationId = "com.example.pagging_remote_medaitor_spacex"
-        minSdk = 26
-        targetSdk = 33
-        versionCode = 1
-        versionName = "1.0"
+        minSdk 26
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
@@ -59,39 +58,39 @@ dependencies {
     implementation"androidx.constraintlayout:constraintlayout:2.1.4"
     implementation"androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
     testImplementation"junit:junit:4.13.2"
-    androidTestImplementation"androidx.test.ext:junit:1.1.5"
-    androidTestImplementation"androidx.test.espresso:espresso-core:3.5.1"
+    androidTestImplementation "androidx.test.ext:junit:1.1.5"
+    androidTestImplementation "androidx.test.espresso:espresso-core:3.5.1"
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
 
     //coroutines
-    implementation"org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
 
     //network
-    implementation"com.square.okhttp3:okhttp:$okhttp_version"
-    implementation"com.squareup.okhttp3:logging-interceptor:$okhttp_version"
-    implementation"com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation"com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+    implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
+
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
 
     //database
-    implementation"androidx.room:room-runtime:$room_version"
-    implementation"androidx.room:room-ktx:$room_version"
-    implementation"androidx.room:room-paging:$room_version"
-    kapt "com.google.dagger:hilt-compiler:$hilt_version"
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+    implementation "androidx.room:room-paging:$room_version"
+
 
     //di
     implementation "com.google.dagger:hilt-android:$hilt_version"
-    implementation "com.google.dagger:hilt_compiler:$hilt_version"
-    
+    kapt "com.google.dagger:hilt-compiler:$hilt_version"
+
+
     //paging
     implementation "androidx.paging:paging-runtime-ktx:$pagging_version"
     
     implementation "com.elveum:element-adapter:0.3"
 
-
-
-
-
-
-
-
-
+}
+kapt {
+    correctErrorTypes = true
 }

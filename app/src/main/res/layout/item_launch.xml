@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <CheckBox
-            android:id="@+id/selectObject"
+            android:id="@+id/selectCheckBox"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_marginStart="10dp"
@@ -41,6 +41,16 @@
             android:textColor="@color/black"
             android:textSize="16sp"
             tools:text="Some Name" />
+
+
+        <ImageView
+            android:id="@+id/statusImageView"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:padding="10dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            tools:src="@drawable/ic_success"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
     </LinearLayout>
 

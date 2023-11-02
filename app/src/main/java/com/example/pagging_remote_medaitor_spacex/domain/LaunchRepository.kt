@@ -1,5 +1,6 @@
 package com.example.pagging_remote_medaitor_spacex.domain
 
+
 import androidx.paging.PagingData
 import kotlinx.coroutines.flow.Flow
 
@@ -11,7 +12,7 @@ interface LaunchRepository {
      *If year is NULL, all launches are queried.
      */
 
-    fun getLaunches(year: Int? = null): Flow<PagingData<Launch>>
+  fun getLaunches(year: Int? = null): Flow<PagingData<Launch>>
 
     /**
      * Toggle the [Launch.isSuccess] flag for the specified launch.

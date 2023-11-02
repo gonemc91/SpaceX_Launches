@@ -1,12 +1,30 @@
 module project
-
+--------------------
 data
-
+////
 di
-
-ui
-  base
+////
+domain
+      ->
+      Launch: interface with base parameters
+      LaunchRepository: get flow with paging data. Data have filter "year"
+////
+ui->
+  base->
       CustomFlowOperator: Emits Flow -> Flow List
       DefaultLoadStateAdapter: Adapter with Padding uses
       Event: Event with value in App is base on LiveData
-      OnChange ? Maybe state. Have parametr value in constructor
+      OnChange ? State. Have parameter value in constructor. Uses in Class [Selection.kt]
+      --------------------------------------------------------------------------------------
+  ->
+  LauncherAdapter: Update UI state in Adapter item
+  LaunchesItemCallback: Callback for second uses item in ListAdapter
+  LaunchUiEntity: Represent data from [Launch] + selection state
+  Selection: functional Selection in Item
+  Year: look view filter year
+////
+  MainActivity
+  MainActivityViewModel
+
+
+
