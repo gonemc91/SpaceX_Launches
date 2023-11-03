@@ -1,6 +1,10 @@
 package com.example.pagging_remote_medaitor_spacex.ui
 
-class MainViewModel {
+import androidx.lifecycle.SavedStateHandle
+
+class MainViewModel(
+    savedStateHandle: SavedStateHandle,
+) {
 
 
 
