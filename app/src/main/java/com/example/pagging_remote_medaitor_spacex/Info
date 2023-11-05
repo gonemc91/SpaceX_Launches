@@ -1,6 +1,18 @@
 module project
 --------------------
-data
+data->
+   retrofit(network framework)->
+           LaunchesQuery: Query in Server with filter year range and query options
+           LaunchNetworkEntity: entity from Network one launch
+           LaunchResponse: accepts List LaunchNetworkEntity. Return in Api
+           LaunchApi: Interface unit Query and Response.
+   room(database framework)->
+           AppDatabase: abstract class init Database. Get LaunchesDao
+           LaunchesDao: entity for database table
+           LaunchRoomEntity: interface foe working with database
+  (DefaultLaunchRepository and  LaunchRemoteMediator unit retrofit data and room data)
+   DefaultLaunchRepository
+   LaunchRemoteMediator
 ////
 di
 ////

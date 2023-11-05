@@ -54,6 +54,8 @@ class LaunchRemoteMediator @AssistedInject constructor(
         return pageIndex
     }
 
+
+    //Fetching data from Server to DataBase
     private suspend fun fetchLaunches(
         limit: Int,
         offset: Int
@@ -63,7 +65,7 @@ class LaunchRemoteMediator @AssistedInject constructor(
             limit = limit,
             offset = offset
         )
-        return LaunchesApi.getLaunches(query)
+        return launchesApi.getLaunches(query)
             .docs
             .map {
                 LaunchRoomEntity(it)
