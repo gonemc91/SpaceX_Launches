@@ -12,7 +12,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 
 @OptIn(ExperimentalCoroutinesApi::class)
-fun launchAdapter(viewModel: MainViewModel) = pagingAdapter<LaunchUiEntity, ItemLaunchBinding> {
+fun launchesAdapter(viewModel: MainViewModel) = pagingAdapter<LaunchUiEntity, ItemLaunchBinding> {
     areItemsSame = {oldItem, newItem -> oldItem.id == newItem.id  }
     bind {launch->
         nameTextView.text = launch.name

@@ -1,5 +1,6 @@
 package com.example.pagging_remote_medaitor_spacex.data.retrofit
 
+import android.util.Log
 import com.google.gson.annotations.SerializedName
 import java.util.*
 import java.util.concurrent.TimeUnit
@@ -12,6 +13,7 @@ data class LaunchesQuery(
                  * Method for simple creation of [LaunchesQuery] instance.
                  */
                 fun create(year: Int?, offset: Int,limit: Int ): LaunchesQuery{
+                        Log.d("YearInfo", "Year : $year")
                         val query = year?.let {
                                 QueryFilter(dataUnix = yearToUnixTimestampRange(it))
                         }
@@ -25,10 +27,11 @@ data class LaunchesQuery(
                 }
 
                 private fun yearToUnixTimestampRange(year: Int): QueryRange {
+                        Log.d("YearAdapter", "Year : $year")
                         val calendar = Calendar.getInstance()
                         calendar.setYear(year)
                         val start = calendar.getUnixTimestamp()
-                        calendar.setYear(year+1)
+                        calendar.setYear(year + 1)
                         val end = calendar.getUnixTimestamp()
                         return QueryRange(
                                 greaterOrEqualsThan = start,
@@ -36,10 +39,11 @@ data class LaunchesQuery(
                         )
                 }
 
-                private fun Calendar.setYear(year: Int){
-                        set(year, Calendar.JANUARY,1,0,0,0)
+                private fun Calendar.setYear(year: Int) {
+                        set(year, Calendar.JANUARY, 1, 0, 0, 0)
                 }
-                private fun Calendar.getUnixTimestamp(): Long{
+
+                private fun Calendar.getUnixTimestamp(): Long {
                         return TimeUnit.MILLISECONDS.toSeconds(timeInMillis)
                 }
 
@@ -52,7 +56,7 @@ data class QueryOptions(
         //sort by date, desc order
         val sort: String = "-date_unix",
         // fields to be fetched
-        val select: String = "flight_numbers name details links date_unix success"
+        val select: String = "flight_number name details links date_unix success"
 )
 
 data class  QueryFilter(

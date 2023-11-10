@@ -16,7 +16,7 @@ interface LaunchesDao {
 
     @Query("SELECT * FROM launches WHERE :year is NULL OR year = :year ORDER by launchTimestamp DESC")
     fun getPagingSource(
-        year: Int
+        year: Int?
     ): PagingSource<Int, LaunchRoomEntity>
 
     /**

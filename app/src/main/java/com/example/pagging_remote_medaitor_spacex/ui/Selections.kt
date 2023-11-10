@@ -6,6 +6,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.map
 
 interface SelectionState {
+
     /**
      * Whether the item is checked or not.
      */
@@ -15,7 +16,7 @@ interface SelectionState {
 /**
  * In-memory handling of check state
  */
-class Selection : SelectionState {
+class Selections : SelectionState {
     private val checkedIds = mutableSetOf<Long>()
     private val checkedIdsFlow =
         MutableStateFlow(OnChange(checkedIds))

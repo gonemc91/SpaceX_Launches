@@ -5,7 +5,7 @@ import androidx.paging.PagingData
 import kotlinx.coroutines.flow.Flow
 
 
-interface LaunchRepository {
+interface LaunchesRepository {
 
     /**
      * Get pages list of launches for the specified year.

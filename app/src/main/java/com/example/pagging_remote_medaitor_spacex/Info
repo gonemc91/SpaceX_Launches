@@ -11,8 +11,8 @@ data->
            LaunchesDao: entity for database table
            LaunchRoomEntity: interface foe working with database
   (DefaultLaunchRepository and  LaunchRemoteMediator unit retrofit data and room data)
-   DefaultLaunchRepository
-   LaunchRemoteMediator
+   DefaultLaunchRepository: realization interface LaunchesRepository. Create pagingData with RoomEntity in Flow
+   LaunchRemoteMediator: unit retrofit data and room database, synchronized paging and room query
 ////
 di
 ////

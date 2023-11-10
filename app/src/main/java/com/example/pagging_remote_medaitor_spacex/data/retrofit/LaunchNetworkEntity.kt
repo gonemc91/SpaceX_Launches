@@ -14,11 +14,10 @@ data class LaunchNetworkEntity(
     val success: Boolean,
 ) : Launch {
     override val description: String get() = detail ?: "-"
-    override val isSuccess: Boolean
-    get() = success
+    override val isSuccess: Boolean get() = success
     override val imageUrl: String get() = links?.patch?.small ?: ""
 
-    override val launchTimestamp: Long = dateUnix
+    override val launchTimestamp: Long get() = dateUnix
 
     override val year: Int get() = Calendar.getInstance().apply {
         timeInMillis = TimeUnit.SECONDS.toMillis(launchTimestamp)
