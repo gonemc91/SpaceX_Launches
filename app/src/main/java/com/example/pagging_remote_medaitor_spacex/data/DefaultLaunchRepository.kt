@@ -4,6 +4,7 @@ import androidx.paging.ExperimentalPagingApi
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
+import androidx.paging.map
 import com.example.pagging_remote_medaitor_spacex.data.room.LaunchRoomEntity
 import com.example.pagging_remote_medaitor_spacex.data.room.LaunchesDao
 import com.example.pagging_remote_medaitor_spacex.domain.Launch
@@ -35,20 +36,21 @@ class DefaultLaunchesRepository @Inject constructor(
             pagingSourceFactory = { launchesDao.getPagingSource(year) }
         )
             .flow
-            .map { it as PagingData<Launch>}
-            //.map { pagingData ->
-               // pagingData.map { launchRoomEntity ->
-                 //   launchRoomEntity
-                //}
-            //}
+            //.map { it as PagingData<Launch> }
+            .map { pagingData ->
+                pagingData.map { launchRoomEntity ->
+                    launchRoomEntity
+                }
+            }
     }
 
     override suspend fun toggleSuccessFlag(launch: Launch) {
 
-        TODO("call an endpoint here for editing the Launch if such endpoint exists")
+        //TODO("call an endpoint here for editing the Launch if such endpoint exists")
 
         val editedEntity = LaunchRoomEntity(launch)
             .copy(isSuccess = !launch.isSuccess)
+
         launchesDao.save(editedEntity)
     }
 

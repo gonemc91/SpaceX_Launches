@@ -1,6 +1,6 @@
 package com.example.pagging_remote_medaitor_spacex.ui
-import android.content.res.ColorStateList
 import android.graphics.Color
+import android.util.Log
 import com.bumptech.glide.Glide
 import com.elveum.elementadapter.context
 import com.elveum.elementadapter.getColor
@@ -15,6 +15,9 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 fun launchesAdapter(viewModel: MainViewModel) = pagingAdapter<LaunchUiEntity, ItemLaunchBinding> {
     areItemsSame = {oldItem, newItem -> oldItem.id == newItem.id  }
     bind {launch->
+        Log.d("Data" , launch.name)
+        Log.d("Data" , launch.description)
+
         nameTextView.text = launch.name
         descriptionTextView.text = launch.description
         selectCheckBox.isChecked = launch.isChecked
@@ -32,9 +35,8 @@ fun launchesAdapter(viewModel: MainViewModel) = pagingAdapter<LaunchUiEntity, It
                 .centerCrop()
                 .into(photoImageView)
         }else{
-            photoImageView.imageTintList = ColorStateList.valueOf(Color.GRAY)
             Glide.with(context())
-                .load(R.drawable.ic_no_image)
+                .load(R.drawable.ic_space_x)
                 .into(photoImageView)
         }
 

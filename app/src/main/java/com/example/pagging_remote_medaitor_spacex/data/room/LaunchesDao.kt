@@ -5,6 +5,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Transaction
 
 @Dao
 interface LaunchesDao {
@@ -38,6 +39,7 @@ interface LaunchesDao {
      * Clear old records and place records from the list.
      */
 
+    @Transaction
     suspend fun refresh(year: Int?, launches: List<LaunchRoomEntity>){
         clear(year)
         save(launches)

@@ -47,6 +47,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(binding.root)
 
         setupList()
@@ -133,7 +134,7 @@ class MainActivity : AppCompatActivity() {
             adapter.refresh()
         }
         adapter.loadStateFlow
-            .debounce(300)
+            .debounce(100)
             .onEach {
                 loadStateHolder.bind(it.refresh)
             }
@@ -157,8 +158,6 @@ class MainActivity : AppCompatActivity() {
             }
 
     }
-
-
 
 
     private fun handleScrollingToTop() = lifecycleScope.launch {

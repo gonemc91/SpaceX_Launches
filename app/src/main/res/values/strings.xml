@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Pagging-Remote-Medaitor-SpaceX</string>
+    <string name="app_name">SpaceX Launches</string>
 
     <string name="load_error">Oops, can\'t load data</string>
     <string name="try_again">Try Again</string>

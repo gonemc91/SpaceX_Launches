@@ -35,19 +35,19 @@ class MainViewModel @Inject constructor(
     private val selections = Selections()
 
     private val yearLiveData =
-        savedStateHandle.getLiveData(KEY_YEAR, 2020)
+        savedStateHandle.getLiveData(KEY_YEAR, 2021)
     var year:Int?
         get() = yearLiveData.value
         set(value){
             yearLiveData.value = value
         }
 
-    private val launchesFlow = yearLiveData.asFlow()//приводим к флоу
-        .distinctUntilChanged()//отфилтровываем повторяющиеся значения
-        .flatMapLatest { //отменяет пред идущий поток
+    private val launchesFlow = yearLiveData.asFlow()
+        .distinctUntilChanged()//filter repeat value
+        .flatMapLatest { //get last value
             launchesRepository.getLaunches(it)
         }
-        .cachedIn(viewModelScope)//кеширум данные для пагинации
+        .cachedIn(viewModelScope)//cached data for paging
 
     val launchesListFlow = combine(
         launchesFlow,

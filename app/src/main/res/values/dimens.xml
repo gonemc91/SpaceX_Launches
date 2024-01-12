@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="elevation_card">6dp</dimen>
+    <dimen name="margin_card">10dp</dimen>
+    <dimen name="card_item_radius">16dp</dimen>
+    <dimen name="card_item_pading">5dp</dimen>
+</resources>

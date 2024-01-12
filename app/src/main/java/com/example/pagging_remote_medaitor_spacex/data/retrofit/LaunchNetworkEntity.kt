@@ -8,12 +8,12 @@ import java.util.concurrent.TimeUnit
 data class LaunchNetworkEntity(
     @SerializedName("flight_number") override val id: Long,
     override val name: String,
-    val detail: String?,
+    val details: String?,
     val links: Links?,
     val dateUnix: Long,
     val success: Boolean,
 ) : Launch {
-    override val description: String get() = detail ?: "-"
+    override val description: String get() = details ?: "-"
     override val isSuccess: Boolean get() = success
     override val imageUrl: String get() = links?.patch?.small ?: ""
 

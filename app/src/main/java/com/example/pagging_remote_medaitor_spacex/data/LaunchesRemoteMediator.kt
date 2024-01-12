@@ -24,8 +24,6 @@ class LaunchesRemoteMediator @AssistedInject constructor(
 ) : RemoteMediator<Int, LaunchRoomEntity>() {
 
     private var pageIndex = 0
-
-
     override suspend fun load(
         loadType: LoadType,
         state: PagingState<Int, LaunchRoomEntity>
@@ -39,17 +37,13 @@ class LaunchesRemoteMediator @AssistedInject constructor(
 
         return try {
             val launches = fetchLaunches(limit, offset)
-
-
-            launchesDao.save(launches)
-
             if (loadType == LoadType.REFRESH){
                 launchesDao.refresh(year, launches)
             }else{
                 launchesDao.save(launches)
             }
             MediatorResult.Success(
-                endOfPaginationReached = launches.size<limit
+                endOfPaginationReached = launches.size < limit
             )
         }catch (e: Exception){
             MediatorResult.Error(e)
@@ -80,7 +74,7 @@ class LaunchesRemoteMediator @AssistedInject constructor(
         return launchesApi.getLaunches(query)
             .docs
             .map {
-                Log.d("NetworkLaunches", "id:${it.id}, Name: ${it.name}, detail: ${it.detail}, Unix_data: ${it.launchTimestamp}  ${it.dateUnix},  Year: ${it.year}")
+                Log.d("NetworkLaunches", "id:${it.id}, Name: ${it.name}, detail: ${it.details}, Unix_data: ${it.launchTimestamp}  ${it.dateUnix},  Year: ${it.year}")
                 LaunchRoomEntity(it)
             }
     }
