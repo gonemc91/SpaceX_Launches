@@ -11,5 +11,5 @@
     <string name="all">ALL</string>
 
     <string name="oops">Oops, error happened</string>
-    <string name="some_description_nline2_nline3">Some description\nLine2\nLine3</string>
+    <string name="some_description_nline2_nline3">Some description\nLine2\nLine3\nLine4\nLine5</string>
 </resources>

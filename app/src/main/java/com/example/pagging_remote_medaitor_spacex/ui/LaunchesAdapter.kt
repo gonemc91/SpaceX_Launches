@@ -51,9 +51,8 @@ fun launchesAdapter(viewModel: MainViewModel) = pagingAdapter<LaunchUiEntity, It
         }
 
         listeners {
-            checkContainer.onClick { viewModel.toggleCheckState(it) }
+            cardViewItems.onClick { viewModel.toggleCheckState(it) }
             statusImageView.onClick { viewModel.toggleSuccessFlag(it) }
-
         }
 
 

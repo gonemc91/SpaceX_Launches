@@ -23,7 +23,6 @@ import com.example.pagging_remote_medaitor_spacex.ui.base.simpleScan
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.debounce
@@ -59,7 +58,6 @@ class MainActivity : AppCompatActivity() {
         observeToast()
 
         handleListVisibility()
-        handleScrollingToTop()
     }
 
     private fun setupYearSpinner(){
@@ -150,7 +148,8 @@ class MainActivity : AppCompatActivity() {
         getRefreshLoadStateFlow(adapter)
             .simpleScan(count = 3)
             .collectLatest { (beforePrevious, previous, current)->
-                binding.launchesRecyclerView.isInvisible = current is LoadState.Error
+                binding.launchesRecyclerView.isInvisible =
+                           current is LoadState.Error
                         || previous is LoadState.Error
                         || (beforePrevious is LoadState.Error
                         && previous is LoadState.NotLoading
@@ -160,20 +159,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun handleScrollingToTop() = lifecycleScope.launch {
-        //list should be scrolled it the 1st item (index=0) if data has been reloaded:
-        // (prev state = Loading, current state = NotLoading)
-        getRefreshLoadStateFlow(adapter)
-            .simpleScan(count = 2)
-            .collect { (previousState, currentState) ->
-                if (previousState is LoadState.Loading
-                    && currentState is LoadState.NotLoading) {
-                    delay(200)
-                    binding.launchesRecyclerView.scrollToPosition(0)
-                }
-            }
 
-    }
 
     private fun getRefreshLoadStateFlow(adapter: PagingDataAdapter<*, *>): Flow<LoadState> {
         return adapter.loadStateFlow
