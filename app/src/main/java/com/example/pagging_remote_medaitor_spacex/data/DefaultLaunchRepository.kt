@@ -46,8 +46,6 @@ class DefaultLaunchesRepository @Inject constructor(
 
     override suspend fun toggleSuccessFlag(launch: Launch) {
 
-        //TODO("call an endpoint here for editing the Launch if such endpoint exists")
-
         val editedEntity = LaunchRoomEntity(launch)
             .copy(isSuccess = !launch.isSuccess)
 
