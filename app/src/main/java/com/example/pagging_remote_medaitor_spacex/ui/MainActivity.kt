@@ -172,6 +172,7 @@ class MainActivity : AppCompatActivity() {
         adapter.onPagesUpdatedFlow
             .map { adapter.itemCount }
             .first { it > 0 }
+
     }
 
 
